@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<title>Above Love</title>	
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		
+		<script type="text/processing" data-processing-target="ending_canvas">	
+		PImage character;
+		PImage companion;
+		var cha;
+		var comp;
+		
+		void setup() {
+			size(400,400);
+			fill(0);
+			rect(0,0,100,100);
+			print("hello");
+			//cha = new mainChar(-70, 55, 5, 150, 500);
+			//comp = new Companion(-70, 55, 5, 650, 500);
+		}
+		
+		void draw() {
+			//background(#CC99FF);
+			//cha.drawChar();
+			//cha.moveChar();
+			//comp.drawComp();
+			//comp.moveComp();
+		}
+		
+				
+		void loadSprites() {
+			/* @pjs preload= characterString; */
+			character = loadImage(characterString);
+		}
+		
+		void loadSprites2() {
+			/* @pjs preload= compString; */
+			companion = loadImage(compString);
+		}
+		
+		class mainChar{
+			var h;
+			var w;
+			var xPos;
+			var yPos;
+			//speed x
+			var sx;
+			
+			mainChar(height, width, xspeed, x, y){
+				h = height;
+				w = width;
+				xPos = x;
+				yPos = y;
+				sx = xspeed;
+			}
+			
+			void drawChar() {
+				image(character, xPos, yPos, w, h);
+			}
+			
+			void moveChar() {
+				while (xPos != 345) {
+					xPos = xPos + sx;
+				}
+			}
+		}
+		
+		class Companion{
+			var h;
+			var w;
+			var xPos;
+			var yPos;
+			//speed x
+			var sx;
+			
+			Companion(height, width, xspeed, x, y){
+				h = height;
+				w = width;
+				xPos = x;
+				yPos = y;
+				sx = xspeed;
+			}
+			
+			void drawComp() {
+				image(companion, xPos, yPos, w, h);
+			}
+				
+			void moveComp() {
+				while (xPos != 455){
+					xPos = xPos - sx;
+				}
+			}
+		}
+		
+		</script>
+	</head>
+	
+	<body>
+		<canvas id="ending_canvas"></canvas>
+	</body>
+</html>

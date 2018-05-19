@@ -1,0 +1,388 @@
+<html>
+	<head>
+		<title>Above Love</title>
+		<style>
+		
+		body{
+		background-color: white;
+		}
+		
+		@font-face{
+		font-family: givemesomesugar;
+		src: url(givemesomesugar_2.ttf);
+		}
+		
+		@font-face{
+		font-family: ALittleSunshine;
+		src: url("ALittleSunshine.ttf");
+		}
+		
+		h1{
+		font-size: 100px;
+		font-family: givemesomesugar;
+		text-align: center; 
+		//main title
+		}
+		
+		h2{
+		font-size: 30px;
+		font-family: givemesomesugar;
+		text-align: right;
+		position: absolute;
+		bottom: 1px;
+		right: 10px;
+		//click to continue
+		}
+		
+		h10{
+		font-size: 30px;
+		font-family: givemesomesugar;
+		text-align: right;
+		position: absolute;
+		bottom: 1px;
+		right: 10px;
+		//level click to continue
+		}
+		
+		h3{ 
+		font-size: 40px;
+		font-family: givemesomesugar;
+		text-align: center;
+		//storyline titles
+		}
+		
+		h4{
+		font-size: 20px;
+		font-family: ALittleSunshine;
+		text-align: center;
+		//please choose one
+		}
+		
+		span{
+		font-size: 30px;
+		font-family: ALittleSunshine;
+		text-align: left;
+		//for the girl, boy, neutral titles 
+		}
+		
+		div{
+		text-align: center;
+		margin: auto;
+		height: 600px;
+		width: 800px;
+		background-color: #CC99FF;
+		position: relative;
+		padding: 10px;
+		}
+		
+		p{
+		font-size: 40px;
+		font-family: ALittleSunshine;
+		text-align: center;
+		//story
+		}
+		
+		#input1{
+		font-family: ALittleSunshine;
+		display:block;
+		text-align:center;
+		}
+
+		img:hover{
+		background-color: #FFFFCC; 
+		}
+		
+		#pageone {
+		display:block;
+		}
+		
+		#pagetwo, #yourself, #yourFriend, #SnowWhiteStory, #Level1, #UnderwaterStory, 
+		#RiverStory, #Level3, #FlyingStory, #Level4, #ClimbingStory, #Ending{
+		display:none;
+		}
+		
+		#inst {
+		display:none;
+		}
+		
+		
+		#four{
+		height:600px;
+		width:800px;
+		}
+		
+	</style>
+	
+	<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.js"></script>
+	</head>
+	<body onload="load()">
+	
+	<div id= "pageone">
+		<img src="drawing.png" alt="logo" style="width:400px;height:230px;">
+		<p> Create your own twenty-first century adventure in a fantasy world! </p>
+		<p style="font-size:30px;"> Created by: Lauren, Jessica, Karen, and Genevieve </p>
+		<h2 onclick = "ChangePage('pageone', 'pagetwo')"> Click to Continue </h2>
+	</div>
+	
+	<div id= "pagetwo">
+		<h1> Mission</h1>
+		<p> On June 26, 2015, the United States Supreme Court united to bring justice and support to the LGBTQ community.
+		However, many children grow up with classic fantasy stories that only include heterosexual relationships.
+		<b>This is no longer realistic.</b> Who says only damsels can be in distress?  </p>
+		<h2 onclick = "ChangePage('pagetwo', 'yourself')"> Click to Continue</h2>
+	</div>
+	
+	
+	
+	<div id= "yourself">
+	<h3> Choose Who You Want to Be! </h3>
+	<h4> Please choose one. </h4>
+	<span> girl </span>
+	<img onclick = "pickCharacter('girlchar1')" id="girlchar1" src="girlchar1.png" alt="girlchar" style="width:100px;height:100px;">
+	<img onclick = "pickCharacter('girlchar2')" id= "girlchar2" src="girlchar2.png" alt="girlchar" style="width:100px;height:100px;">
+	<img onclick = "pickCharacter('girlchar3')" id= "girlchar3" src="girlchar3.png" alt="girlchar" style="width:100px;height:100px;">
+	<br>
+	<span> boy </span>
+	<img onclick = "pickCharacter('boychar1')" id= "boychar1" src="boychar1.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick = "pickCharacter('boychar2')" id= "boychar2" src="boychar2.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick = "pickCharacter('boychar3')" id= "boychar3" src="boychar3.png" alt="girlchar" style="width:90px;height:100px;">
+	<br>
+	<span> neutral </span>
+	<img onclick = "pickCharacter('otherchar1')" id= "otherchar1" src="otherchar1.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick = "pickCharacter('otherchar2')" id= "otherchar2" src="otherchar2.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick = "pickCharacter('otherchar3')" id= "otherchar3" src="otherchar3.png" alt="girlchar" style="width:90px;height:100px;">
+	<center><p id="CharacterSubmit" style="font-size:20px;line-height:5%;">Your Character's Name</p><input type="text" name="UserCharacter" id="charNameInput"><button type ="button" onclick="ReloadCharacter()">Submit</button></input></center>
+	<h2 onclick = "ChangePage('yourself', 'yourFriend')"> Click to Continue </h2>
+	</div>
+	
+	<div id= "yourFriend">
+	<h3> Who Do You Want to Save? </h3>
+	<h4> Please choose one. </h4>
+	<span> girl</span>
+	<img onclick="pickCompanion('girlsave1')" id= "girlsave1" src="girlsave1.png" alt="girlchar" style="width:100px;height:100px;">
+	<img onclick="pickCompanion('girlsave2')" id= "girlsave2" src="girlsave2.png" alt="girlchar" style="width:100px;height:100px;">
+	<img onclick="pickCompanion('girlsave3')" id= "girlsave3" src="girlsave3.png" alt="girlchar" style="width:100px;height:100px;">
+	<br>
+	<span> boy</span>
+	<img onclick="pickCompanion('boysave1')" id= "boysave1" src="boysave1.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick="pickCompanion('boysave2')" id= "boysave2" src="boysave2.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick="pickCompanion('boysave3')" id= "boysave3" src="boysave3.png" alt="girlchar" style="width:90px;height:100px;">
+	<br>
+	<span> neutral</span>
+	<img onclick="pickCompanion('othersave1')" id= "othersave1" src="othersave1.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick="pickCompanion('othersave2')" id= "othersave2" src="othersave2.png" alt="girlchar" style="width:90px;height:100px;">
+	<img onclick="pickCompanion('othersave3')" id= "othersave3" src="othersave3.png" alt="girlchar" style="width:90px;height:100px;">
+	<center><p id="CompanionSubmit" style="font-size:20px;line-height:5%;">Your Companion's Name</p><input type="text" name="CompanionCharacter" id="compNameInput"><button type="button" onclick="ReloadCompanion()">Submit</button></input></center>
+	<h2 onclick = "ChangePage('yourFriend', 'SnowWhiteStory')">Start the Magic!</h2>
+	</div>
+	
+	<div id="SnowWhiteStory">
+	<h3>And so it Begins...</h3>
+	<h4 style="line-height:200%;font-size:30px;">Once upon a time, you and <span id= "comp1"></span> strolled by the Times Square crystal ball when suddenly... 
+	the world around you stopped moving as the crystal ball began spinning. The crystals shone bright enough to momentarily blind you! You are suddenly transported 
+	into a new world full of dark forests. As you regain your vision, you see two shadows dragging <span id="comp2"></span> into the forest!
+	 You have to find <span id= "comp3"> </span>, and this looks like the perfect place to start. Watch out for the shadow creatures!</h4>
+	<h2  onclick = "ChangePage('SnowWhiteStory', 'inst')"> Click to Continue </h2>
+	</div>
+	
+	<div id= "inst">
+		<h1> Instructions</h1>
+		<p>Make sure you click into each game screen before you play!</p>
+		<p>Press the keys 
+		<p style="font-size:25px;"><b>W</b> for <b>UP</b></p> 
+		<p style="font-size:25px;"><b>D</b> for <b>RIGHT</b></p>
+		<p style="font-size:25px;"><b>A</b> for <b>Left</b></p>
+		<h2 onclick = "ChangePage('inst', 'Level1'); startSketch('one'); resetLives();"> Click to Continue</h2>
+	</div>
+	
+	<div id="Level1">
+	<canvas id="one" data-processing-sources="scroller1.pde"></canvas>
+	<h10 style="color: white" onclick = "ChangePage('Level1', 'RiverStory'); stopSketch('one'); changeCharLevel(characterString, 'three')"> Click to Continue </h10>
+	</div>
+	
+	<!--<div id="UnderwaterStory">
+	<h3>Do you know how to swim?</h3>
+	<h4 style="line-height:200%;font-size:30px;">Congrats <span id="char1"> </span>! When you reached the end of the forest, you came upon
+	 the biggest, deepest ocean in the world! It is known for its beautiful water and rainbow fish. 
+	You know that <span id= "comp4"> </span> is across this ocean, and you would do anything to save your friend. Watch out for the shadows! Oh my!</h4>
+	<h2 onclick = "ChangePage('UnderwaterStory', 'Level2'); startSketch('two'); changeCharLevel(characterString, 'one'); resetLives();"> Click to Continue </h2>
+	</div>
+	
+	<div id="Level2">
+	<canvas id="two" data-processing-sources="scroller2.pde"></canvas>
+	<h10 onclick = "ChangePage('Level2', 'RiverStory'); stopSketch('two');"> Click to Continue </h10>
+	</div>-->
+	
+	<div id="RiverStory">
+	<h3>Can You Canoe?</h3>
+	<h4 style="line-height:200%;font-size:30px;">Wow <span id="char1"> </span>, you must really love <span id= "comp4"> </span>!
+	 While walking in the forest, you came upon a river! <span id= "comp5"> </span> is closer, you can feel it. You must follow the winds and 
+	river bends to reach <span id= "comp6"> </span>! However, beware of the shadow creatures amongst the rapids!</h4>
+	<h2 onclick = "ChangePage('RiverStory', 'Level3'); startSketch('three'); resetLives();"> Click to Continue </h2>
+	</div>
+	
+	<div id="Level3">
+	<canvas data-processing-sources="scroller3.pde" id = "three"></canvas>
+	<h10 style="color: white" onclick = "ChangePage('Level3', 'FlyingStory'); stopSketch('three'); changeCharLevel(characterString, 'four');"> Click to Continue </h10>
+	</div>
+	
+	<div id="FlyingStory">
+	<h3>Are You afraid of heights?</h3>
+	<h4 style="line-height:200%;font-size:30px;">As you leave the river, you see a cliff. A perfect place to rest for the night!
+	 However, as you lay down, you rise and fly off into the night! 
+	 All you can think about is <span id= "comp7"> </span>, and you know that <span id= "comp8"> </span> is closer than ever. 
+	 You must fly through the starry skies on your carpet so that when you find <span id= "comp9"> </span>, you can now show <span id= "comp10"> </span> the world! 
+	 However, beware of the shadows that fly in this world!</h4>
+	<h2 onclick = "ChangePage('FlyingStory', 'Level4'); startSketch('four');"> Click to Continue </h2>
+	</div>
+	
+	<div id="Level4">
+		<h3 id="EndHead1" style="display:none;">Ending</h3>
+		<h4 id="EndHead2" style="line-height:200%;font-size:30px;display:none;">Congratulations <span id="char2"> </span>! You have rescued <span id= "comp11"> </span> 
+		across the worlds while making new memories! You saved <span id= "comp12"> </span> from the evil shadow creatures! Bravo! You and <span id= "comp13"> </span> can 
+		now live the rest of your lives in peace and love. Congratulations!</h4>
+	<canvas data-processing-sources="scroller4.pde" id = "four"></canvas>
+	<h10 style="color: white" onclick = "startSketch('ending')" style="display:block" id="lastclick"> Click to Continue </h10>
+	<h2 onclick = "location.reload()" style="display:none" id="playagain"> Play Again! </h2>
+	</div>
+	
+	<!--ChangePage('Level4', 'Ending');-->
+	<!--<div id="ClimbingStory">
+	<h3>Don&rsquo;t look down!!</h3>
+	<h4 style="line-height:200%;font-size:30px;">You have been flying all evening, but at last you can see the light of a new morning! 
+	The winds take you to a world full of high towers and gorgeous gardens. You have a dream to at last see <span id= "comp12"> </span>! 
+	As you gaze up at the tower, you can see <span id= "comp13"> </span> and hear <span id= "comp14"> </span>&rsquo;s voice. 
+	You have to climb the tower, but watch out for slippery moss and the shadow creatures!!</h4>
+	<h2 onclick = "ChangePage('ClimbingStory', 'Level5')"> Click to Continue </h2>
+	</div>
+	
+	<div id="Level5">
+	<h3>Level 5</h3>
+	<h2 onclick = "ChangePage('Level5', 'Ending')"> Click to Continue </h2>
+	</div>-->
+	
+	<!--
+	<div id="Ending">
+			<h3>Ending</h3>
+		<h4 style="line-height:200%;font-size:30px;">Congratulations <span id="char2"> </span>! You have rescued <span id= "comp11"> </span> 
+	across the worlds while making new memories! You saved <span id= "comp12"> </span> from the evil shadow creatures! Bravo! You and <span id= "comp13"> </span> can 
+now live the rest of your lives in peace and love. Congratulations!</h4>
+		<canvas data-processing-sources="scroller4.pde" id = "ending" height="300px" width="800px"></canvas>-->
+
+		<iframe src="/ending.html" width="800px" height="1px" frameBorder="0">
+			<p>Your browser does not support iframes.</p>
+		</iframe>
+		
+		<!--<h2 onclick = "ChangePage('Ending', 'pageone'); "> Play Again! </h2>
+		
+	</div>-->
+	
+	
+	<br><br><p style="font-size:25px">Jessica Eng, Lauren Cueto, Karen Roman, and Genevieve Del Prete are all high school students from San Francisco. 
+We met at Twitter HQ this summer because of the Girls Who Code program, which is an organization working to increase the number of girls 
+going into the tech industry. This is our final project! <br> A special thanks to our wonderful teachers Mark Idleman, Adriana Hernandez, 
+and Isabel Vaughan Brekke. <br> Thank you Reshma Saujani for founding such an amazing and inspiring program! <br><br>
+<img src="gwc.png" alt="gwclogo" style="width:247px;height:100px;"></p> 
+	
+	
+	<script type="text/javascript">
+		var lives = 10;
+		var score = 0;
+		var characterString;
+		var compString;
+		var processingInstance = "one";
+		var hateLife;
+		var characterAnimate;
+		var LoadEnding = false;
+		
+		function load(){
+			stopSketch("one");
+			stopSketch("three");
+			stopSketch("four");
+			stopSketch("ending");
+		}
+		
+		function resetLives(){
+			lives = 10;
+		}
+		
+		function pickCharacter(characterId, canvasID) {
+			document.getElementById(characterId).style.background = "#FFFFCC";
+			characterString = characterId + ".png";
+			characterAnimate = characterId + "run.png";
+			//processingInstance = Processing.getInstanceById("one");
+			//processingInstance.loadSprites();
+		}
+		
+		function pickCompanion(companionId) {
+			document.getElementById(companionId).style.background = "#FFFFCC";
+			compString = companionId + ".png";
+			//processingInstance = Processing.getInstanceById("ending");
+			//processingInstance.loadSprites2();
+		}
+		
+		function changeCharLevel(characterString, canvasID){
+			processingInstance = Processing.getInstanceById(canvasID);
+			processingInstance.loadSprites();
+		}
+		
+		function ChangePage(GoAway, ShowUp){
+			document.getElementById(GoAway).style.display = "none";
+			document.getElementById(ShowUp).style.display = "block";
+		}
+		
+		function ReloadCharacter(){
+			var charName = document.getElementById("charNameInput").value;
+			document.getElementById("CharacterSubmit").innerHTML = "Success!";
+			for (var i = 1; i < 3; i++){
+				document.getElementById("char" + i).textContent = charName;
+			}
+		}
+		
+		function ReloadCompanion(){
+			var compName = document.getElementById("compNameInput").value;
+			document.getElementById("CompanionSubmit").innerHTML = "Success!";
+			for (var i = 1; i < 14; i++){
+				document.getElementById("comp" + i).textContent = compName;
+			}
+		}
+		
+		function startSketch(canvasID){
+			console.log("turn on");
+			if (canvasID == "ending"){
+				LoadEnding = true;
+				document.getElementById("EndHead1").style.display = "block";
+				document.getElementById("EndHead2").style.display = "block";
+				document.getElementById("lastclick").style.display = "none";
+				document.getElementById("playagain").style.display = "block";
+				document.getElementById("four").style.height = "250px";
+			}
+			else{
+				switchSketchState(true, canvasID);
+			}
+
+		}
+		
+		function stopSketch(canvasID){
+			console.log("i am off");
+			switchSketchState(false, canvasID);
+		}
+		
+		function switchSketchState(on, canvasID){
+            processingInstance = Processing.getInstanceById(canvasID);
+            if(processingInstance){
+				if(on){
+					processingInstance.loadSprites();
+					console.log("Starting instance" + processingInstance);
+					processingInstance.loop();
+					console.log("start " + canvasID);
+				}
+				else{
+					processingInstance.noLoop();
+					console.log("stop " + canvasID);
+				}
+			}
+		}
+	</script>	
+	</body>
+</html>
